@@ -1,0 +1,2 @@
+sap.ui.define(["com/bosch/rbf0/lo/rfidlc/controller/BaseController","sap/ui/model/json/JSONModel"],function(e,t){"use strict";return e.extend("com.bosch.sd.rfidloadctrl.controller.App",{onInit:function(){var e,s=this.getView().getBusyIndicatorDelay();e=new t({busy:false,delay:0,originalBusyDelay:s});this.setModel(e,"appView");this.getView().addStyleClass(this.getOwnerComponent().getContentDensityClass())}})});
+//# sourceMappingURL=App.controller.js.map

@@ -1,0 +1,19 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form">
+	<Dialog type="Message" state="{monitorView>/ValueState}" class="myBottomDialog"
+	   visible="{parts:[ 'monitorView>/E_MessageInfor' ], formatter:'.formatter.showForm'}"
+	    >
+		<content>	
+			<VBox id="VB1" width="100%" height="100px">
+			<f:SimpleForm adjustLabelSpan="false" editable="false" emptySpanL="0" emptySpanM="0" emptySpanS="0"
+				emptySpanXL="0" labelSpanL="4" labelSpanM="4" labelSpanS="4" labelSpanXL="4" 
+				layout="ResponsiveGridLayout" singleContainerFullSize="true"
+				visible="true" width="100%">
+				<f:content>
+					<Text text="{monitorView>/E_MessageInfor}" class="popupFont"/>					
+				</f:content>
+			</f:SimpleForm>
+			   <!-- <Button id="_triggerMessage" text="Trigger message" press="_triggerMessage"/>    -->
+			</VBox>	    			
+		</content>
+	</Dialog>
+</core:FragmentDefinition>

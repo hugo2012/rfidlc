@@ -1,0 +1,2 @@
+sap.ui.define(["com/bosch/rbf0/lo/rfidlc/controller/BaseController"],function(r){"use strict";return r.extend("com.bosch.rbf0.lo.rfidlc.controller.NotFound",{onLinkPressed:function(){this.getRouter().navTo("startup",{},true);history.go(0)}})});
+//# sourceMappingURL=NotFound.controller.js.map

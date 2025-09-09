@@ -1,0 +1,194 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	controllerName="com.bosch.rbf0.lo.rfidlc.controller.Monitor" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:l="sap.ui.layout">
+	<Page title="Monitor" showNavButton="true" navButtonPress="onNavButtonPress">
+		<content>
+			<FlexBox justifyContent="SpaceBetween" visible="{DisplayHeader}" class="sapMOHR sapMOHRBgTranslucent" height="auto">
+				<items>
+					<VBox height="auto" class="borderAround sapUiMediumMarginBegin">
+						<items>
+							<Title text="{i18n>labelGate}: {monitorView>/Gate}" class="headerBig"/>
+							<Text text="{i18n>loadNumber}: { path: 'LoadNumber', formatter: '.getLoadNumber' }" width="auto" wrapping="true" textAlign="Begin"
+								class="headerBig sapUiTinyMarginBottom"/>
+						</items>
+					</VBox>
+					<VBox height="auto" class="borderAround">
+						<items>
+							<Text text="{i18n>labelCounter}:" width="auto" wrapping="true" textAlign="Begin" class="headerBig"/>
+							<Title text="{monitorView>/CountCurrent}/{monitorView>/CountTotal}" class="headerBig"/>
+						</items>
+					</VBox>
+					<VBox height="auto" class="borderAround sapUiMediumMarginEnd">
+						<items>
+							<Text text="{i18n>labelStackingfactor}:" width="auto" wrapping="true" textAlign="Begin" class="headerBig"/>
+							<Title text="{Stackingfactor}" class="headerBig"/>
+						</items>
+					</VBox>
+				</items>
+			</FlexBox>
+			<HBox width="100%" height="auto" class="brightBackground" visible="{monitorView>/errorFound}">
+				<MessageStrip text="{i18n>msgErrorStrip}" type="Error" showIcon="false" showCloseButton="false" class="sapUiResponsiveMargin msgStripFont"></MessageStrip>
+			</HBox>
+			<l:ResponsiveSplitter defaultPane="default" height="auto">
+				<l:PaneContainer>
+					<l:SplitPane requiredParentWidth="800" id="default">
+						<FlexBox class="sapUiResponsiveMargin" direction="Column">
+							<Table id="idStatusTable" width="auto" noDataText="{i18n>txtNoDataLast}" updateFinished="onLeftTableUpdateFinished"
+								items="{ path: '/LatestReadsSet' }" busyIndicatorDelay="0" growing="true" growingThreshold="10" growingTriggerText="{i18n>btnGrowing}">
+								<headerToolbar>
+									<Toolbar>
+										<Title text="{i18n>headCurrentTable}:"/>
+										<Title text="{monitorView>/LeftTableCount}" class="tableHeaderCountIcon"/>
+										<ToolbarSpacer/>
+										<core:Icon src="{ path: 'LoadTruck', formatter: '.truckIconLeft' }" class="tableHeaderCountIcon" tooltip="{i18n>icnLoadDir}"/>
+										<core:Icon src="sap-icon://shipping-status" class="tableHeaderCountIcon" tooltip="{i18n>icnTruck}"/>
+									</Toolbar>
+								</headerToolbar>
+								<columns>
+									<Column width="auto" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline">
+										<header>
+											<Text text="{i18n>columnHU}"/>
+										</header>
+										<footer/>
+									</Column>
+									<Column width="auto" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline">
+										<header>
+											<Text text="{i18n>columnTimestamp}"/>
+										</header>
+										<footer/>
+									</Column>
+								</columns>
+								<items>
+									<ColumnListItem type="Active">
+										<cells>
+											<HBox>
+												<Text text="{ path: 'HUNumber', formatter: '.firstDigits' }" class="tableRowsFont"/>
+												<Text text="{ path: 'HUNumber', formatter: '.lastDigits' }" class="tableRowsFontBig"/>
+											</HBox>
+											<HBox>
+												<Text text="{ path: 'ScanDate', formatter: '.dateConverter'}" class="tableRowsFont"/>
+												<Text text=" - " class="tableRowsFontBig"/>
+												<Text text="{ path: 'ScanTime', formatter: '.timeConverter'}" class="tableRowsFont"/>
+											</HBox>
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+							<Table width="auto" id="oDummyLeftTable" visible="false" items="{dummyLeftModel>/dummyLeftRows}">
+								<columns>
+									<Column></Column>
+								</columns>
+								<items>
+									<ColumnListItem type="Active">
+										<cells>
+											<HBox>
+												<Text text="{= ' | '}" class="tableRowsFontBigDummy"/>
+											</HBox>
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+						</FlexBox>
+						<l:layoutData><l:SplitterLayoutData resizable="false"/></l:layoutData>
+					</l:SplitPane>
+					<l:SplitPane id="idCenterSplitPane" requiredParentWidth="800">
+						<FlexBox class="sapUiResponsiveMargin" direction="Column">
+							<Table id="idMiddle" width="auto" noDataText="{i18n>txtNoRemainingItems}" updateFinished="onMiddleTableUpdateFinished"
+								items="{ path: '/RemainHUsSet' }" busyIndicatorDelay="0" growing="true" growingThreshold="10" growingTriggerText="{i18n>btnGrowing}">
+								<headerToolbar>
+									<Toolbar>
+										<Title text="{i18n>headRemainingHUsTable}:"/>
+										<Title text="{monitorView>/CenterTableCount}" class="tableHeaderCountIcon"/>
+									</Toolbar>
+								</headerToolbar>
+								<columns>
+									<Column width="auto" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" hAlign="Center">
+										<header>
+											<Text text="{i18n>columnHU}"/>
+										</header>
+										<footer/>
+									</Column>
+								</columns>
+								<items>
+									<ColumnListItem type="Active">
+										<cells>
+											<HBox>
+												<Text text="{ path: 'HUNumber', formatter: '.firstDigits' }" class="tableRowsFont"/>
+												<Text text="{ path: 'HUNumber', formatter: '.lastDigits' }" class="tableRowsFontBig"/>
+											</HBox>
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+							<Table width="auto" id="oDummyMiddleTable" visible="false" items="{dummyMiddleModel>/dummyMiddleRows}">
+								<columns>
+									<Column></Column>
+								</columns>
+								<items>
+									<ColumnListItem type="Active">
+										<cells>
+											<HBox>
+												<Text text="{= ' | '}" class="tableRowsFontBigDummy"/>
+											</HBox>
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+						</FlexBox>
+						<l:layoutData><l:SplitterLayoutData resizable="false" size="25%"/></l:layoutData>
+					</l:SplitPane>
+					<l:SplitPane requiredParentWidth="800">
+						<FlexBox class="sapUiResponsiveMargin" direction="Column">
+							<Table id="idErrorTable" width="auto" noDataText="{i18n>txtNoDataError}" updateFinished="onRightTableUpdateFinished"
+								items="{ path: '/ErrorReadsSet' }" busyIndicatorDelay="0" growing="true" growingThreshold="10" growingTriggerText="{i18n>btnGrowing}">
+								<headerToolbar>
+									<Toolbar>
+										<Title text="{i18n>headErrorTable}:"/>
+										<Title text="{monitorView>/ErrorTableCount}" class="tableHeaderCountIcon"/>
+									</Toolbar>
+								</headerToolbar>
+								<columns>
+									<Column width="15rem" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" hAlign="Center">
+										<header>
+											<Text text="{i18n>columnHU}"/>
+										</header>
+										<footer/>
+									</Column>
+								</columns>
+								<items>
+									<ColumnListItem type="Active">
+										<cells>
+											<VBox>
+												<HBox>
+													<Text text="{ path: 'HUNumber', formatter: '.firstDigits' }" class="tableRowsFont"/>
+													<Text text="{ path: 'HUNumber', formatter: '.lastDigits' }" class="tableRowsFontBig"/>
+												</HBox>
+												<HBox>
+													<Text text="{Comment}" class="tableRowsFont"/>
+												</HBox>
+											</VBox>
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+							<Table width="auto" id="oDummyRightTable" visible="false" items="{dummyRightModel>/dummyRightRows}">
+								<columns>
+									<Column></Column>
+								</columns>
+								<items>
+									<ColumnListItem type="Active">
+										<cells>
+											<HBox>
+												<Text text="{= ' | '}" class="tableRowsFontBigDummy"/>
+											</HBox>
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+						</FlexBox>
+						<l:layoutData><l:SplitterLayoutData resizable="false" size="25%"/></l:layoutData>
+					</l:SplitPane>
+				</l:PaneContainer>
+			</l:ResponsiveSplitter>
+		</content>
+	</Page>
+</mvc:View>

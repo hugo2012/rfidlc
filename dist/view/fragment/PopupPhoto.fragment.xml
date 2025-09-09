@@ -1,0 +1,23 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout">
+	<Dialog title="{i18n>photoHeader}" type="Message" state="None" stretch="true" verticalScrolling="false" horizontalScrolling="false">
+		<content>
+			<FlexBox alignItems="Start">
+				<items>
+					<Image src="{monitorView>/sPhoto}" densityAware="false" tooltip="{i18n>icnLastImage}" width="80%">
+						<layoutData>
+							<FlexItemData growFactor="3"/>
+						</layoutData>
+					</Image>
+					<Text text="Ladung 4711 is vollständig und Warenausgang gebucht.">
+						<layoutData>
+							<FlexItemData growFactor="1"/>
+						</layoutData>
+					</Text>
+				</items>
+			</FlexBox>
+		</content>
+		<endButton>
+			<Button text="{monitorView>/cancelLabel}" press="onClosePhotoDialog"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

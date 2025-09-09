@@ -1,0 +1,103 @@
+/* Enter your custom styles here */
+
+
+/*.sapUiGlobalBackgroundColor,*/
+
+
+/*.sapMGlobalBackgroundColor {*/
+
+
+/*    background-image: none;*/
+
+
+/*    background-color: white;*/
+
+
+/*}*/
+
+.sapMText {
+    /*font-size: 2.875rem;*/
+}
+
+.sapMListTbl .sapMText,
+.sapMListTbl .sapMLabel {
+    /*font-size: 1.875rem;*/
+}
+
+.sapMListTbl .sapMObjectIdentifierTitle .sapMLnk,
+.sapMListTbl .sapMObjectIdentifierTitle .sapMText {
+    /*font-size: 1.875rem;*/
+}
+
+.borderAround {
+    /*border: 1px solid #000;*/
+}
+
+.headerLine {
+    /*font-size: 3.5rem;*/
+    /*   font-weight: bold;*/
+}
+
+.headerBig {
+    font-size: 2rem;
+}
+
+.headerHighlighted {
+    font-size: 1.75rem;
+}
+
+.tableRowsFont {
+    font-size: 1.3125rem !important;
+    line-height: 1.75rem !important;
+    /* Make it in line with the big font */
+}
+
+.tableRowsFontBig {
+    font-size: 1.5125rem !important;
+    font-weight: bold !important;
+}
+
+.tableRowsFontBigDummy {
+    position: relative;
+    left: -100px !important;
+    color: white !important;
+    font-size: 1.5125rem !important;
+    font-weight: bold !important;
+}
+
+.tableHeaderCountIcon {
+    font-size: 1.6875rem !important;
+}
+
+.sapMPage {
+    /*background: #fafafa;*/
+}
+
+.sapUiResponsiveSplitter {
+    /*background: #fcfcfc;*/
+}
+
+.brightBackground {
+    /*background: #fcfcfc;*/
+}
+
+.brightBackground>div {
+    width: 100%;
+}
+
+.msgStripFont>div>span {
+    font-size: 1.5125rem !important
+}
+
+/* Initial POPUP */
+.labelPadding {
+    padding-right: 1.5rem;
+}
+
+.popupFont {
+    font-size: 1.75rem;
+}
+
+.fullWidth {
+    width: 100%;
+}

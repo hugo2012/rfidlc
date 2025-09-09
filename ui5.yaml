@@ -1,0 +1,32 @@
+specVersion: "3.1"
+metadata:
+  name: rfidlc
+type: application
+server:
+  customMiddleware:
+    - name: fiori-tools-proxy
+      afterMiddleware: compression
+      configuration:
+        ignoreCertError: false
+        backend:
+          - path: /sap
+            url: http://a1m-https-sso:42
+            destination: A1M
+            client: '011'
+            authenticationType: PrincipalPropagation
+        ui5:
+          path:
+            - /resources
+            - /test-resources
+          url: https://ui5.sap.com
+    - name: fiori-tools-appreload
+      afterMiddleware: compression
+      configuration:
+        port: 35730
+        path: webapp
+        delay: 300
+    - name: fiori-tools-preview
+      afterMiddleware: fiori-tools-appreload
+      configuration:
+        component: com.bosch.rbf0.lo.rfidlc
+        ui5Theme: sap_fiori_3

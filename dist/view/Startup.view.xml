@@ -1,0 +1,37 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="com.bosch.rbf0.lo.rfidlc.controller.Startup"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:f="sap.ui.layout.form">
+	<Page title="Startup">
+		<content>
+			<VBox class="sapUiSmallMargin">
+				<f:SimpleForm editable="true" layout="ResponsiveGridLayout" title="{i18n>enterData}" labelSpanXL="3" labelSpanL="3"
+					labelSpanM="3" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="1"
+					columnsL="1" columnsM="1" singleContainerFullSize="false">
+					<f:content>
+						<Label text="{i18n>labelTPLST}"/>
+						<!--value="{startupView>/WarehouseNo}"-->
+						<Input id="idWarehouseNo" value="{startupView>/WarehouseNo}" suggestionItems="{/TransportPointSet}" suggestionItemSelected="onWarehouseNoSuggestionSelected"
+							showSuggestion="true" startSuggestion="0" liveChange="onWarehouseNoLiveChange" submit="onWarehouseNoSubmit" >
+							<suggestionItems>
+								<core:Item text="{WarehouseNo}"/>
+							</suggestionItems>
+						</Input>
+						<Label text="{i18n>labelGate}"/>
+						<Input id="idGate" value="{startupView>/Gate}" enabled="{startupView>/enableGate}" suggestionItems="{/GatesSet}"
+							suggestionItemSelected="onGateSuggestionSelected" submit="onGateSubmit" showSuggestion="true" startSuggestion="0">
+							<suggestionItems>
+								<core:Item text="{Gate}"/>
+							</suggestionItems>
+						</Input>
+					</f:content>
+				</f:SimpleForm>
+			</VBox>
+		</content>
+		<footer>
+			<Bar>
+				<contentRight>
+					<Button id="idNextBtn" text="{i18n>toMonitor}" type="Emphasized" press="handleToMonitorPress"/>
+				</contentRight>
+			</Bar>
+		</footer>
+	</Page>
+</mvc:View>

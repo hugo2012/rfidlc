@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="RB4R.LO_RFID_LOAD_MONITOR_API" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <EntityType Name="Gates" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="WarehouseNo"/>
+                    <PropertyRef Name="Gate"/>
+                </Key>
+                <Property Name="WarehouseNo" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Warehouse No." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Gate" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Door" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="HeaderLine" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="WarehouseNo"/>
+                    <PropertyRef Name="Gate"/>
+                </Key>
+                <Property Name="WarehouseNo" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Warehouse No." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Gate" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Door" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LoadNumber" Type="Edm.String" Nullable="false" MaxLength="35" sap:unicode="false" sap:label="Load Number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CountCurrent" Type="Edm.Int32" Nullable="false" sap:unicode="false" sap:label="Count Current" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CountTotal" Type="Edm.Int32" Nullable="false" sap:unicode="false" sap:label="Count Total" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LoadTruck" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="Load Truck" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ErrorMessage" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Error Message" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Carrier" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Carrier Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="License" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="License Plate" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="LatestReads" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="WarehouseNo"/>
+                    <PropertyRef Name="Gate"/>
+                    <PropertyRef Name="HUNumber"/>
+                </Key>
+                <Property Name="WarehouseNo" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Warehouse No." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Gate" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Door" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="HUNumber" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="HU" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Status" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Single-Character Flag" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ScanDate" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="Scan date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ScanTime" Type="Edm.Time" Nullable="false" Precision="0" sap:unicode="false" sap:label="Scan time" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Photo" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="WarehouseNo"/>
+                    <PropertyRef Name="Gate"/>
+                </Key>
+                <Property Name="WarehouseNo" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Warehouse No." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Gate" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Door" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LoadNumber" Type="Edm.String" Nullable="false" MaxLength="35" sap:unicode="false" sap:label="Load Number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="RemainHUs" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="WarehouseNo"/>
+                    <PropertyRef Name="Gate"/>
+                    <PropertyRef Name="HUNumber"/>
+                    <PropertyRef Name="LoadNo"/>
+                </Key>
+                <Property Name="WarehouseNo" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Warehouse No." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Gate" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Door" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="HUNumber" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="HU" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LoadNo" Type="Edm.String" Nullable="false" MaxLength="35" sap:unicode="false" sap:label="Load No." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="TransportPoint" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="WarehouseNo"/>
+                </Key>
+                <Property Name="WarehouseNo" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Warehouse No." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ErrorReads" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="WarehouseNo"/>
+                    <PropertyRef Name="Gate"/>
+                    <PropertyRef Name="HUNumber"/>
+                </Key>
+                <Property Name="WarehouseNo" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Warehouse No." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Gate" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Door" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="HUNumber" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="HU" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Status" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Status" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Comment" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Comment" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="UserDefaultParameters" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Field"/>
+                    <PropertyRef Name="Value"/>
+                </Key>
+                <Property Name="Field" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Value" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityContainer Name="RB4R_LO_RFID_LOAD_MONITOR_API_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="GatesSet" EntityType="RB4R.LO_RFID_LOAD_MONITOR_API.Gates" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="HeaderLineSet" EntityType="RB4R.LO_RFID_LOAD_MONITOR_API.HeaderLine" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="LatestReadsSet" EntityType="RB4R.LO_RFID_LOAD_MONITOR_API.LatestReads" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="PhotoSet" EntityType="RB4R.LO_RFID_LOAD_MONITOR_API.Photo" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="RemainHUsSet" EntityType="RB4R.LO_RFID_LOAD_MONITOR_API.RemainHUs" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="TransportPointSet" EntityType="RB4R.LO_RFID_LOAD_MONITOR_API.TransportPoint" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ErrorReadsSet" EntityType="RB4R.LO_RFID_LOAD_MONITOR_API.ErrorReads" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="UserDefaultParametersSet" EntityType="RB4R.LO_RFID_LOAD_MONITOR_API.UserDefaultParameters" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+            </EntityContainer>
+            <atom:link rel="self" href="https://A1M.WDISP.BOSCH.COM:443/sap/opu/odata/RB4R/LO_RFID_LOAD_MONITOR_API/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="https://A1M.WDISP.BOSCH.COM:443/sap/opu/odata/RB4R/LO_RFID_LOAD_MONITOR_API/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
