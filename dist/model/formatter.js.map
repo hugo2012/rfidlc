@@ -1,1 +1,0 @@
-{"version":3,"file":"formatter.js","names":["sap","ui","define","showInfo","sCarrier","length","showForm"],"sources":["formatter-dbg.js"],"mappings":"AAAAA,IAAIC,GAAGC,OAAO,GAAI,WACjB,aAEA,MAAO,CACNC,SAAU,SAASC,GAClB,GAAIA,GAAYA,EAASC,OAAS,EAAG,CACpC,OAAO,KACR,CACA,OAAO,IACR,EACAC,SAAU,SAASF,GAClB,GAAIA,GAAYA,EAASC,OAAS,EAAG,CACpC,OAAO,IACR,CACA,OAAO,KACR,EAEF","ignoreList":[]}

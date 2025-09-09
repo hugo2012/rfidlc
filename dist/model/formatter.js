@@ -1,2 +1,0 @@
-sap.ui.define([],function(){"use strict";return{showInfo:function(n){if(n&&n.length>0){return false}return true},showForm:function(n){if(n&&n.length>0){return true}return false}}});
-//# sourceMappingURL=formatter.js.map
